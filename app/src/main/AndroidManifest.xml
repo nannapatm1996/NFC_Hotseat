@@ -16,11 +16,15 @@
         android:theme="@style/Theme.Nfc"
         android:networkSecurityConfig="@xml/network_security_config"
 
+
         >
 
-        <activity android:name=".seatbooking"></activity>
+        <activity android:name=".seatbooking" android:screenOrientation="landscape">
+        </activity>
         <activity android:name=".Register" />
+
         <activity android:name=".MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -35,6 +35,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.net.URL;
 import java.security.Key;
+import java.sql.BatchUpdateException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Queue;
@@ -43,6 +44,7 @@ public class seatbooking extends AppCompatActivity {
 
     private TextView txName;
     private ImageView img1, img2, img3, img4;
+    private ImageView GFloor, MFloor;
     private TextView DeviceId;
     private Long choose1 = 0L, choose2 = 0L, choose3 = 0L, choose4 = 0L;
     private String URL, tagId;
@@ -61,11 +63,26 @@ public class seatbooking extends AppCompatActivity {
         AlertDialog.Builder alertBuilder;
 
         TextView txName = (TextView) findViewById(R.id.txName);
-        img1 = (ImageView) findViewById(R.id.img1);
+        /*img1 = (ImageView) findViewById(R.id.img1);
         img2=  (ImageView) findViewById(R.id.img2);
         img3 = (ImageView) findViewById(R.id.img3);
-        img4 = (ImageView) findViewById(R.id.img4);
+        img4 = (ImageView) findViewById(R.id.img4);*/
+        GFloor = (ImageView) findViewById(R.id.imgGFloor);
+        Button btnGFloor = (Button) findViewById(R.id.btnGFloor);
+        Button btnMFloor = (Button) findViewById(R.id.btnMFloor);
         Button btnconfirmSeat = (Button) findViewById(R.id.btnSubmitSeat);
+        Button btnZoneGA = (Button) findViewById(R.id.btnZoneGA);
+        Button btnZoneGB = (Button) findViewById(R.id.btnZoneGB);
+        Button btnZoneGC = (Button) findViewById(R.id.btnZoneGC);
+
+        Button btnZoneMA = (Button) findViewById(R.id.btnZoneMA);
+        Button btnZoneMB = (Button) findViewById(R.id.btnZoneMB);
+
+        btnZoneMA.setVisibility(View.GONE);
+        btnZoneMB.setVisibility(View.GONE);
+
+
+
 
         txName.setText(fname + " " + lname);
         alertBuilder = new AlertDialog.Builder(this);
@@ -73,7 +90,42 @@ public class seatbooking extends AppCompatActivity {
         //Set Up seat 1 time
         //writeNewSeat("1A", "SEP64AE0CF72FC7", 0);
         //writeNewSeat("2A", "SEP64AE0CF72FC7", 0);
+        btnMFloor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GFloor.setImageResource(R.drawable.nssb_floorplan_m);
+                btnZoneGA.setVisibility(View.GONE);
+                btnZoneGB.setVisibility(View.GONE);
+                btnZoneGC.setVisibility(View.GONE);
+                btnZoneMA.setVisibility(View.VISIBLE);
+                btnZoneMB.setVisibility(View.VISIBLE);
+
+
+            }
+        });
+
+        btnGFloor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GFloor.setImageResource(R.drawable.nssb_floorplan_g);
+                btnZoneGA.setVisibility(View.VISIBLE);
+                btnZoneGB.setVisibility(View.VISIBLE);
+                btnZoneGC.setVisibility(View.VISIBLE);
+                btnZoneMA.setVisibility(View.GONE);
+                btnZoneMB.setVisibility(View.GONE);
+            }
+        });
+
+        btnZoneGA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+/*
         ReadSeatFirebase();
+
+
 
 
 
@@ -185,6 +237,7 @@ public class seatbooking extends AppCompatActivity {
 
             }
         });
+*/
 
     }
 
